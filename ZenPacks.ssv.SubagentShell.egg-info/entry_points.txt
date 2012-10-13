@@ -1,0 +1,3 @@
+[zenoss.zenpacks]
+ZenPacks.ssv.SubagentShell = ZenPacks.ssv.SubagentShell
+
