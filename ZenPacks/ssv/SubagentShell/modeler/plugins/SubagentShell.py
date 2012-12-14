@@ -20,6 +20,7 @@ class SubagentShell(SnmpPlugin):
               '.1.3.6.1.4.1.777.100.6.2':           'SubagentShellSoftwareLastUpdate',
               '.1.3.6.1.4.1.777.100.10.1.1':        'SubagentShellNamedStat',
               '.1.3.6.1.4.1.777.100.11.1':          'SubagentShellMailqLength',
+              '.1.3.6.1.4.1.777.100.12.1':          'SubagentShellSwapPages',
     }
     snmpGetMap = GetMap( mibDesc )
 
