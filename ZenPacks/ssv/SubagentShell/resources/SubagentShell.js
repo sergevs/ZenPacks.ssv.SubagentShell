@@ -14,6 +14,7 @@ ZC.CommandStatusPanel = Ext.extend(ZC.ComponentGridPanel, {
     constructor: function(config) {
         config = Ext.applyIf(config||{}, {
             componentType: 'CommandStatus',
+            autoExpandColumn: 'name',
             fields: [
                 {name: 'uid'},
                 {name: 'severity'},
@@ -21,7 +22,8 @@ ZC.CommandStatusPanel = Ext.extend(ZC.ComponentGridPanel, {
                 {name: 'name'},
                 {name: 'usesMonitorAttribute'},
                 {name: 'monitored'},
-                {name: 'monitor'}
+                {name: 'monitor'},
+                {name: 'locking'}
             ],
             columns: [{
                 id: 'severity',
@@ -37,14 +39,23 @@ ZC.CommandStatusPanel = Ext.extend(ZC.ComponentGridPanel, {
                 id: 'monitored',
                 dataIndex: 'monitored',
                 header: _t('Monitored'),
-                width: 60
+                renderer: Zenoss.render.checkbox,
+                width: 65,
+                sortable: true
             },{
                 id: 'status',
                 dataIndex: 'status',
                 header: _t('Status'),
                 width: 60
+            },{
+                id: 'locking',
+                dataIndex: 'locking',
+                header: _t('Locking'),
+                renderer: Zenoss.render.locking_icons,
+                width: 65
             }]
         });
+
         ZC.CommandStatusPanel.superclass.constructor.call(this, config);
     }
 });

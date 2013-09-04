@@ -29,12 +29,12 @@ class CommandStatus(Service):
         'meta_type'      : 'CommandStatus',
         'description'    : """Arbitrary device grouping class""",
         'product'        : 'SubagentShell',
-        'immediate_view' : 'viewCommandStatus',
+        'immediate_view' : 'CommandStatusDetail',
         'actions'        :
         ( 
             { 'id'            : 'status'
             , 'name'          : 'Status'
-            , 'action'        : 'viewCommandStatus'
+            , 'action'        : 'CommandStatusDetail'
             , 'permissions'   : (ZEN_VIEW, )
             },
             { 'id'            : 'events'

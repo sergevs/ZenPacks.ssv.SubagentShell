@@ -17,6 +17,12 @@
                  class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
                  permission="zope2.Public"
                  />
+
+        <adapter factory=".info.PingStatusInfo"
+                 for=".PingStatus.PingStatus"
+                 provides=".interfaces.IPingStatusInfo"
+        />
+
     </configure>
 </configure>
 
