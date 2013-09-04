@@ -7,34 +7,36 @@ from Products.ZenModel.ZenossSecurity import *
 from Products.ZenRelations.RelSchema import *
 from Products.ZenModel.Service import *
 
-class WebService(Service):
+class PingStatus(Service):
 
-  portal_type = meta_type = 'WebService'
+  portal_type = meta_type = 'PingStatus'
 
   title = ''
-  httpRespIndex = '0'
-  httpRespCurlArgs = ''
+  pingIndex = '0'
+  pingHost = ''
+  pingCount = 0
 
   _properties = Service._properties + (
-      {'id':'httpRespCurlArgs', 'type':'string', 'mode':'r'},
+      {'id':'pingHost', 'type':'string', 'mode':'r'},
+      {'id':'pingCount', 'type':'int', 'mode':'r'},
    )
 
   _relations = Service._relations + (
-    ("os", ToOne(ToManyCont,"Products.ZenModel.OperatingSystem","webservice")),
+    ("os", ToOne(ToManyCont,"Products.ZenModel.OperatingSystem","pingstatus")),
   )
 
   factory_type_information = ( 
     { 
-        'id'             : 'WebService',
-        'meta_type'      : 'WebService',
+        'id'             : 'PingStatus',
+        'meta_type'      : 'PingStatus',
         'description'    : """Arbitrary device grouping class""",
         'product'        : 'SubagentShell',
-        'immediate_view' : 'WebServiceDetail',
+        'immediate_view' : 'PingStatusDetail',
         'actions'        :
         ( 
             { 'id'            : 'status'
             , 'name'          : 'Status'
-            , 'action'        : 'WebServiceDetail'
+            , 'action'        : 'PingStatusDetail'
             , 'permissions'   : (ZEN_VIEW, )
             },
             { 'id'            : 'events'
@@ -68,7 +70,7 @@ class WebService(Service):
     """
     Return the RRD Templates list
     """
-    return [self.getRRDTemplateByName('SubagentShellWebService')]
+    return [self.getRRDTemplateByName('SubagentShellPingStatus')]
 
   def getStatus(self, statClass=None):
     """
@@ -87,4 +89,4 @@ class WebService(Service):
       return self.id
   name = viewName
 
-InitializeClass(WebService)
+InitializeClass(PingStatus)
