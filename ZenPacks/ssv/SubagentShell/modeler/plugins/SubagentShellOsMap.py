@@ -1,16 +1,6 @@
-################################################################################
-#
-# This program is part of the SubagentShell Zenpack for Zenoss.
-#
-# This program can be used under the GNU General Public License version 2
-# You can find full information here: http://www.zenoss.com/oss
-#
-################################################################################
-
 __doc__="""SubagentShellOsMap
 
-SubagentShellOsMap map mib elements from SubagentShell snmp mib to get  os
-products.
+maps net-snmp SubagentShell SUBAGENT-SHELL-OSINFO-MIB to OS model.
 """
 
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetMap

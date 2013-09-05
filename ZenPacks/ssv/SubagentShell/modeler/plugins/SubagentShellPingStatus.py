@@ -1,3 +1,11 @@
+__doc__="""SubagentShell PingStatus 
+
+maps net-snmp SubagentShell SUBAGENT-SHELL-PING-STAT-MIB
+
+$Id: SubagentShellPingStatus.py,v 1.1 2013/09/05 16:01  Exp $"""
+
+__version__ = '$Revision: 1.1 $'
+
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetTableMap
 
 class SubagentShellPingStatus(SnmpPlugin):
@@ -33,7 +41,7 @@ class SubagentShellPingStatus(SnmpPlugin):
       om.title = om.pingHost
       om.pingCount = int(om.pingTransmitted)
       om.snmpindex = int(om.pingIndex)
-      log.info("pingTransmitted %s" , om.pingTransmitted )
+      log.debug("pingTransmitted %s" , om.pingTransmitted )
       rm.append(om)
     
     return rm

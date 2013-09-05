@@ -1,9 +1,14 @@
+__doc__="""SubagentShell PingStatus 
+
+PingStatus maps net-snmp SubagentShell SUBAGENT-SHELL-PING-STAT-MIB
+
+$Id: PingStatus.py,v 1.1 2013/09/05 16:01  Exp $"""
+
+__version__ = '$Revision: 1.1 $'
+
 from Globals import InitializeClass
-
 from AccessControl import ClassSecurityInfo
-
 from Products.ZenModel.ZenossSecurity import *
-
 from Products.ZenRelations.RelSchema import *
 from Products.ZenModel.Service import *
 
