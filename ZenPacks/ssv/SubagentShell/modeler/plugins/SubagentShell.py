@@ -43,7 +43,7 @@ class SubagentShell(SnmpPlugin):
 
         for each in SubagentShell.mibDesc.values():
           if getdata.has_key(each) and getdata[each] != None:
-            log.info('newTemplates append: %s' % each)
+            log.debug('New component/templates append: %s' % each)
             om = self.objectMap({'template_name':each})
             om.title=each
             om.id = each
