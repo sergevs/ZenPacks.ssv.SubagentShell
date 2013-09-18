@@ -19,6 +19,7 @@ class WebService(Service):
   title = ''
   httpRespIndex = '0'
   httpRespCurlArgs = ''
+  httpRespMonitoringTemplate = ''
 
   _properties = Service._properties + (
       {'id':'httpRespCurlArgs', 'type':'string', 'mode':'r'},
@@ -73,7 +74,10 @@ class WebService(Service):
     """
     Return the RRD Templates list
     """
-    return [self.getRRDTemplateByName('SubagentShellWebService')]
+    if self.httpRespMonitoringTemplate:
+      return [self.getRRDTemplateByName(self.httpRespMonitoringTemplate)]
+    else:
+      return [self.getRRDTemplateByName('SubagentShellWebService')]
 
   def getStatus(self, statClass=None):
     """

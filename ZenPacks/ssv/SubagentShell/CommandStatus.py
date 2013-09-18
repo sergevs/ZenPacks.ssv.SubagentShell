@@ -19,6 +19,7 @@ class CommandStatus(Service):
   title = ''
   cmdIndex = '0'
   cmdName = ''
+  cmdMonitoringTemplate = ''
 
   _properties = Service._properties + (
       {'id':'cmdName', 'type':'string', 'mode':'r'},
@@ -73,7 +74,10 @@ class CommandStatus(Service):
     """
     Return the RRD Templates list
     """
-    return [self.getRRDTemplateByName('SubagentShellCommandStatus')]
+    if self.cmdMonitoringTemplate:
+      return [self.getRRDTemplateByName(self.cmdMonitoringTemplate)]
+    else:
+      return [self.getRRDTemplateByName('SubagentShellCommandStatus')]
 
   def getStatus(self, statClass=None):
     """
@@ -81,9 +85,8 @@ class CommandStatus(Service):
     """
    # Unknown status if we're not monitoring the interface.
     if self.snmpIgnore():  return -1
-    s = self.cacheRRDValue('cmdExecStatus', None)
-    if s is None: s = -1 
-    if s != 0: s = 1
+    s = self.cacheRRDValue('cmdExecStatus', -1)
+    if s < -1 or s > 0 : s = 1
     return s
 
   def convertStatus(self, status):

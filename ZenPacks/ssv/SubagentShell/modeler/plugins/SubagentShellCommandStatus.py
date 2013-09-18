@@ -22,6 +22,7 @@ class SubagentShellCommandStatus(SnmpPlugin):
       GetTableMap('SubagentShellCommandStatus', '.1.3.6.1.4.1.777.100.9.1.1',
               {'.1': 'cmdIndex',
                '.5': 'cmdName',
+               '.7': 'cmdMonitoringTemplate',
               }
       ),
   )

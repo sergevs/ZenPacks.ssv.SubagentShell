@@ -22,6 +22,7 @@ class SubagentShellWebService(SnmpPlugin):
       GetTableMap('SubagentShellWebService', '.1.3.6.1.4.1.777.100.8.1.1',
               {'.1': 'httpRespIndex',
                '.6': 'httpRespCurlArgs',
+               '.8': 'httpRespMonitoringTemplate',
               }
       ),
   )
