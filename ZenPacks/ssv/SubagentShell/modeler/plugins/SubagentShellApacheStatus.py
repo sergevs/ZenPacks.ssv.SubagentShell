@@ -7,6 +7,7 @@ $Id: SubagentShellApacheStatus.py,v 1.1 2013/09/05 16:01  Exp $"""
 __version__ = '$Revision: 1.1 $'
 
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetTableMap
+from urllib import quote_plus
 
 class SubagentShellApacheStatus(SnmpPlugin):
   """
@@ -36,7 +37,7 @@ class SubagentShellApacheStatus(SnmpPlugin):
 
     for oid, aps in apacheStatusTable.iteritems():
       om = self.objectMap(aps)
-      om.id = self.prepId("SubagentShellApacheStatus%02d" % int(om.apsIndex))
+      om.id = self.prepId("SubagentShellApacheStatus-%s" % quote_plus(om.apsUrl))
       om.title = om.apsUrl
       om.snmpindex = int(om.apsIndex)
       rm.append(om)

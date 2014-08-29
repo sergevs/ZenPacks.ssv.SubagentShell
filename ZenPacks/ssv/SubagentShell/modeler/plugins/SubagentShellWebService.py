@@ -7,6 +7,7 @@ $Id: SubagentShellWebService.py,v 1.1 2013/09/05 16:01  Exp $"""
 __version__ = '$Revision: 1.1 $'
 
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetTableMap
+from urllib import quote_plus
 
 class SubagentShellWebService(SnmpPlugin):
   """
@@ -37,7 +38,7 @@ class SubagentShellWebService(SnmpPlugin):
 
     for oid, ws in webServiceTable.iteritems():
       om = self.objectMap(ws)
-      om.id = self.prepId("WebService%02d" % int(om.httpRespIndex))
+      om.id = self.prepId("WebService-%s" % quote_plus(om.httpRespCurlArgs))
       om.snmpindex = int(om.httpRespIndex)
       om.title = om.httpRespCurlArgs 
       rm.append(om)

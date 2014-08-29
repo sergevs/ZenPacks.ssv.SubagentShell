@@ -7,6 +7,7 @@ $Id: SubagentShellCommandStatus.py,v 1.1 2013/09/05 16:01  Exp $"""
 __version__ = '$Revision: 1.1 $'
 
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetTableMap
+from urllib import quote_plus
 
 class SubagentShellCommandStatus(SnmpPlugin):
   """
@@ -37,7 +38,7 @@ class SubagentShellCommandStatus(SnmpPlugin):
 
     for oid, cs in commandStatusTable.iteritems():
       om = self.objectMap(cs)
-      om.id = self.prepId("CommandStatus%02d" % int(om.cmdIndex))
+      om.id = self.prepId("CommandStatus-%s" % quote_plus(om.cmdName))
       om.snmpindex = int(om.cmdIndex)
       om.title = om.cmdName 
       rm.append(om)

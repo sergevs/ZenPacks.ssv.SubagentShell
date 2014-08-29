@@ -37,7 +37,7 @@ class SubagentShellPingStatus(SnmpPlugin):
 
     for oid, aps in pingStatusTable.iteritems():
       om = self.objectMap(aps)
-      om.id = self.prepId("SubagentShellPingStatus%02d" % int(om.pingIndex))
+      om.id = self.prepId("SubagentShellPingStatus-%s" % om.pingHost)
       om.title = om.pingHost
       om.pingCount = int(om.pingTransmitted)
       om.snmpindex = int(om.pingIndex)

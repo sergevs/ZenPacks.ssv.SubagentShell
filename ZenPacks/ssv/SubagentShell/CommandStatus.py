@@ -11,6 +11,7 @@ from AccessControl import ClassSecurityInfo
 from Products.ZenModel.ZenossSecurity import *
 from Products.ZenRelations.RelSchema import *
 from Products.ZenModel.Service import *
+import types
 
 class CommandStatus(Service):
 
@@ -86,6 +87,7 @@ class CommandStatus(Service):
    # Unknown status if we're not monitoring the interface.
     if self.snmpIgnore():  return -1
     s = self.cacheRRDValue('cmdExecStatus', -1)
+    if type(s) == types.FloatType and s.hex() == 'nan' : return -1
     if s < -1 or s > 0 : s = 1
     return s
 
