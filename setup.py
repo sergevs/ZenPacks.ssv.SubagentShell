@@ -3,7 +3,7 @@
 # or saved.  Do not modify them directly here.
 # NB: PACKAGES is deprecated
 NAME = "ZenPacks.ssv.SubagentShell"
-VERSION = "1.13"
+VERSION = "1.14"
 AUTHOR = "Serge Sergeev"
 LICENSE = "GPLv3"
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.ssv']

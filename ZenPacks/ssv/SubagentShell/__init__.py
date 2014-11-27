@@ -10,6 +10,7 @@ from Products.ZenModel.OperatingSystem import OperatingSystem
 from Products.ZenRelations.RelSchema import *
 
 OperatingSystem._relations += (("diskstat", ToManyCont(ToOne, "ZenPacks.ssv.SubagentShell.DiskStat", "os")), )
+OperatingSystem._relations += (("dnslookup", ToManyCont(ToOne, "ZenPacks.ssv.SubagentShell.DNSLookup", "os")), )
 OperatingSystem._relations += (("apachestatus", ToManyCont(ToOne, "ZenPacks.ssv.SubagentShell.ApacheStatus", "os")), )
 OperatingSystem._relations += (("commandstatus", ToManyCont(ToOne, "ZenPacks.ssv.SubagentShell.CommandStatus", "os")), )
 OperatingSystem._relations += (("webservice", ToManyCont(ToOne, "ZenPacks.ssv.SubagentShell.WebService", "os")), )
@@ -34,6 +35,6 @@ class ZenPack(ZenPackBase):
 
     def remove(self, app, junk):
         ZenPackBase.remove(self, app, junk)
-        OperatingSystem._relations = tuple([x for x in OperatingSystem._relations if x[0] not in ['apachestatus','commandstatus','webservice','pingstatus','subagentshell']])
+        OperatingSystem._relations = tuple([x for x in OperatingSystem._relations if x[0] not in ['diskstat','dnslookup','apachestatus','commandstatus','webservice','pingstatus','subagentshell']])
         for d in self.dmd.Devices.getSubDevices():
             d.os.buildRelations()

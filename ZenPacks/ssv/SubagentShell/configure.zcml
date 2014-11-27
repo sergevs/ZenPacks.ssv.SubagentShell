@@ -23,6 +23,11 @@
                  provides=".interfaces.IPingStatusInfo"
         />
 
+        <adapter factory=".info.DNSLookupInfo"
+                 for=".DNSLookup.DNSLookup"
+                 provides=".interfaces.IDNSLookupInfo"
+        />
+
     </configure>
 </configure>
 

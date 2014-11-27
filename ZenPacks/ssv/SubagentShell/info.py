@@ -9,3 +9,8 @@ class PingStatusInfo(ComponentInfo):
   implements(interfaces.IPingStatusInfo)
   host = ProxyProperty("pingHost")
   count = ProxyProperty("pingCount")
+
+class DNSLookupInfo(ComponentInfo):
+  implements(interfaces.IDNSLookupInfo)
+  lookupName = ProxyProperty("dnsLookupName")
+  resolvedIp = ProxyProperty("dnsLookupResolvedIp")
