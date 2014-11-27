@@ -10,7 +10,7 @@ from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetTableM
 
 class SubagentShellDiskStat(SnmpPlugin):
   """
-  Map net-snmp subagent shell apache status mib to DiskStat component
+  Map net-snmp subagent shell disk statistic mib to DiskStat component
   """
   maptype = "DiskStat"
 # both 3 parameters are required 
